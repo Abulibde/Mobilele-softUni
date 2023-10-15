@@ -9,6 +9,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void registerUser(UserRegistrationDTO userRegistrationDTO) {
-        System.out.println(userRegistrationDTO );
+        System.out.println(userRegistrationDTO); //<---ANTI PATTERN
     }
 }
