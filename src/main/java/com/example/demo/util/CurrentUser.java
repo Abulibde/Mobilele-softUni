@@ -3,7 +3,7 @@ package com.example.demo.util;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
 
-@Component
+@Component("currentUser")
 @SessionScope
 public class CurrentUser {
 
@@ -30,6 +30,22 @@ public class CurrentUser {
         this.lastName = lastName;
     }
 
+    public String getFullName() {
+
+        StringBuilder sb = new StringBuilder();
+
+        if (firstName != null) {
+            sb.append(firstName);
+
+            if (lastName != null) {
+                sb.append(" ");
+                sb.append(lastName);
+            }
+        }
+
+        return sb.toString();
+    }
+
     public boolean isLogged() {
         return isLogged;
     }
@@ -38,7 +54,7 @@ public class CurrentUser {
         isLogged = logged;
     }
 
-    public void logout(){
+    public void logout() {
         setLogged(false);
         setFirstName(null);
         setLastName(null);

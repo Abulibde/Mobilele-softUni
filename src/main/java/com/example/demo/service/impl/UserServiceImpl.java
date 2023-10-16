@@ -74,4 +74,8 @@ public class UserServiceImpl implements UserService {
         }
         return loginSuccess;
     }
+
+    public void logoutUser(){
+        currentUser.logout();
+    }
 }
