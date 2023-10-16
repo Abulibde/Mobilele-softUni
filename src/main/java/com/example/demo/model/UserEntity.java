@@ -10,6 +10,7 @@ public class UserEntity extends BaseEntity {
 
     private String lastName;
 
+    @Column(unique = true)
     private String email;
 
     private String password;
