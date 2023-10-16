@@ -10,20 +10,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class OfferController {
 
     @GetMapping("/all")
-    public String all(){
+    public String all() {
         return "offers";
     }
 
     @GetMapping("/add")
-    public String add(){
+    public String add() {
         return "offer-add";
     }
 
     @GetMapping("/{id}/details")
-    public String details(@PathVariable("id") String uuid){
+    public String details(@PathVariable("id") String uuid) {
         return "details";
     }
-
 
 
 }
