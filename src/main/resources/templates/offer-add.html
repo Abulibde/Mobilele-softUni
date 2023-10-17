@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="~{fragments/head}">
 </head>
@@ -29,6 +30,8 @@
                     Vechicle model is required.
                 </p>
             </div>
+
+
             <div class="form-group col-md-6 mb-3">
                 <label for="price" class="text-white font-weight-bold">Price</label>
                 <input id="price" type="number" min="0" step="100" class="form-control"
@@ -38,24 +41,40 @@
                 </p>
             </div>
         </div>
+
+
         <div class="row">
+
+            <!-- Engine -->
             <div class="form-group col-md-6 mb-3">
                 <label class="text-center text-white font-weight-bold" for="engine">Engine</label>
-                <select id="engine" class="form-control">
+                <select id="engine"
+                        name="engine"
+                        class="form-control">
                     <option value="">- Select engine type -</option>
-                    <option>
-                        Engine type
+                    <option th:each="e : ${engines}"
+                            th:text="${e}"
+                            th:value="${e}">
+
                     </option>
                 </select>
                 <p class="errors alert alert-danger">
                     Engine type is required.
                 </p>
             </div>
+            <!-- EO: Engine -->
+
+
             <div class="form-group col-md-6 mb-3">
                 <label class="text-center text-white font-weight-bold" for="transmission">Transmission</label>
-                <select id="transmission" class="form-control">
+                <select id="transmission"
+                        name="transmission"
+                        class="form-control">
                     <option value="">- Select transmission type -</option>
-                    <option> Transmission type
+                    <option th:each="t : ${T(com.example.demo.model.enums.Transmission).values()}"
+                            th:text="${t}"
+                            th:value="${t}">
+
                     </option>
                 </select>
                 <p class="errors alert alert-danger">
@@ -63,6 +82,8 @@
                 </p>
             </div>
         </div>
+
+
         <div class="row">
             <div class="form-group col-md-6 mb-3">
                 <label for="year" class="text-white font-weight-bold">Year</label>
@@ -72,6 +93,8 @@
                     Manufacturing year is required.
                 </p>
             </div>
+
+
             <div class="form-group col-md-6 mb-3">
                 <label for="mileage" class="text-white font-weight-bold">Mileage</label>
                 <input id="mileage" type="number" min="0" max="900000" step="1000"
@@ -82,6 +105,7 @@
                 </p>
             </div>
         </div>
+
 
         <div class="form-group">
             <label class="text-white font-weight-bold" for="description">Description</label>
