@@ -8,7 +8,7 @@ public record CreateOfferDTO(
         Long modelId,
         EngineEnum engine,
         Transmission transmission,
-        String imgURL,
+        String imageUrl,
         Integer mileage,
         Integer price,
         Integer year
