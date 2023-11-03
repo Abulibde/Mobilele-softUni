@@ -19,6 +19,8 @@ public class OfferServiceImpl implements OfferService {
     @Override
     public UUID createOffer(CreateOfferDTO createOfferDTO) {
          //TODO create offer
-        throw new UnsupportedOperationException("Comming soon");
+       // throw new UnsupportedOperationException("Comming soon");
+
+        return UUID.randomUUID();
     }
 }
