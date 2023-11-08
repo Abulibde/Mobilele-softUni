@@ -2,6 +2,7 @@ package com.example.demo.model.dto;
 
 import com.example.demo.model.enums.EngineEnum;
 import com.example.demo.model.enums.Transmission;
+import com.example.demo.model.validation.YearNotInTheFuture;
 import jakarta.validation.constraints.*;
 
 public class CreateOfferDTO {
@@ -30,6 +31,7 @@ public class CreateOfferDTO {
         @NotNull
         Integer price;
 
+        @YearNotInTheFuture(message = "Future years are not allowed")
         @NotNull
         @Min(1930)
         Integer year;
