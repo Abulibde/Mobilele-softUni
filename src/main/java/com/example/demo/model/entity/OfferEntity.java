@@ -3,6 +3,10 @@ package com.example.demo.model.entity;
 import com.example.demo.model.enums.EngineEnum;
 import com.example.demo.model.enums.Transmission;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import org.hibernate.annotations.JdbcTypeCode;
 
 import java.math.BigDecimal;
@@ -13,6 +17,38 @@ import java.util.UUID;
 @Entity
 @Table(name = "offers")
 public class OfferEntity extends BaseEntity {
+
+    @NotNull
+    @JdbcTypeCode(Types.VARCHAR)
+    private UUID uuid;
+
+    @NotEmpty
+    private String description;
+
+    @NotNull
+    @ManyToOne
+    private ModelEntity model;
+
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    private EngineEnum engine;
+
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    private Transmission transmission;
+
+    @NotEmpty
+    private String imgUrl;
+
+    @Positive
+    private long mileage;
+
+    @NotNull
+    private BigDecimal price;
+
+    @Min(1930)
+    private int year;
+
     public UUID getUuid() {
         return uuid;
     }
@@ -20,28 +56,6 @@ public class OfferEntity extends BaseEntity {
     public void setUuid(UUID uuid) {
         this.uuid = uuid;
     }
-
-    @JdbcTypeCode(Types.VARCHAR)
-    private UUID uuid;
-
-    private String description;
-
-    @ManyToOne
-    private ModelEntity model;
-
-    @Enumerated(EnumType.STRING)
-    private EngineEnum engine;
-
-    @Enumerated(EnumType.STRING)
-    private Transmission transmission;
-
-    private String imgUrl;
-
-    private long mileage;
-
-    private BigDecimal price;
-
-    private int year;
 
     public String getDescription() {
         return description;
