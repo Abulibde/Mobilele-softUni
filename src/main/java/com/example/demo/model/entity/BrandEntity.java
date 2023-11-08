@@ -1,21 +1,40 @@
 package com.example.demo.model.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import org.springframework.data.jpa.repository.EntityGraph;
+
+import java.util.List;
 
 @Entity
 @Table(name = "brands")
-public class BrandEntity extends BaseEntity{
+@NamedEntityGraph(
+        name = "brandWithModels",
+        attributeNodes = @NamedAttributeNode("models")
+)
+public class BrandEntity extends BaseEntity {
 
     @Column(nullable = false, unique = true)
-    private String brand;
+    private String name;
 
-    public String getBrand() {
-        return brand;
+    @OneToMany(
+            fetch = FetchType.EAGER,
+            mappedBy = "brand"
+    )
+    private List<ModelEntity> models;
+
+    public List<ModelEntity> getModels() {
+        return models;
     }
 
-    public void setBrand(String brand) {
-        this.brand = brand;
+    public void setModels(List<ModelEntity> models) {
+        this.models = models;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String brand) {
+        this.name = brand;
     }
 }
