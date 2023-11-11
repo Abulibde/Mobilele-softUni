@@ -32,7 +32,7 @@ public class CreateOfferDTO {
         Integer price;
 
         @YearNotInTheFuture(message = "Future years are not allowed")
-        @NotNull
+        @NotNull(message = "Year must be provided")
         @Min(1930)
         Integer year;
 
