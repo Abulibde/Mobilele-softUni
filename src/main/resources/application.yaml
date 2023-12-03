@@ -41,3 +41,10 @@ logging:
   level:
     org.hibernate.sql: debug
     org.hibernate.orm.jdbc.bind: trace
+
+open.exchange.rates:
+  schema: https
+  host: openexchangerates.org
+  path: /api/latest.json
+  app_id: ${APP_ID:test}
+  symbols: EUR,BGN

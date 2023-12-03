@@ -33,7 +33,7 @@ public class UserServiceImpl implements UserService {
     }
 
 
-    private UserEntity map(UserRegistrationDTO userRegistrationDTO) {
+    private UserEntity  map(UserRegistrationDTO userRegistrationDTO) {
 
         UserEntity userEntity = new UserEntity();
         userEntity.setActive(true);
